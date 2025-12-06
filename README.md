@@ -12,22 +12,22 @@
  ### 1. Network & Security
  - Install Tailscale 
  - **FIX** (optional): Disabled SMB Multichannel to prevent throttling.
- **'Set-SmbServerConfiguration -Enable Multichannel $false -Force'**
+ ```Set-SmbServerConfiguration -Enable Multichannel $false -Force```
 - **Firewall** : Whitelisted Tailscale subnet (100.0.x) for SMB traffic.
 
 ### 2. SSH Backup (Just In Case Layer)
 - Enabled Windows OpenSSH Server via Optional Features on Windows Setting .
 - **Service** : Set 'sshd' to Automatic startup .
-- **Trap Avoided** : Created a local user **'nas_user'** to bypass Microsoft Account authentication issues over SSH
+- **Trap Avoided** : Created a local user ```nas_user``` to bypass Microsoft Account authentication issues over SSH
 
 ### 3. Web NAS (FileBrowser)
 - Tool : [FileBrowser] (https://filebrowser.org)
 - **Persistence** : Used NSSM (Non-Sucking Service Manager) to run the binary as a background Windows service
-- **Command** : **'.\filebrowser.exe -r "D:\Files" -a 0.0.0.0 -p 8080'**
+- **Command** : ```.\filebrowser.exe -r "D:\Files" -a 0.0.0.0 -p 8080```
 
 ## How to Connect
 - **Coding** : 'Code tunnel' via VS Code Desktop.
-- **Terminal** : 'ssh nas_user@tailcale-ip'
-- **Files** : 'http://< tailscale-ip >:8080'
+- **Terminal** : ```ssh nas_user@tailcale-ip```
+- **Files** :```http://< tailscale-ip >:8080```
 
 ### Tailscale MagicDNS makes remembering IPs unnecessary
