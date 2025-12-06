@@ -27,7 +27,7 @@
 
 ## How to Connect
 - **Coding** : 'Code tunnel' via VS Code Desktop.
-- **Terminal** : ```ssh nas_user@tailcale-ip```
+- **Terminal** : ```ssh nas_user@tailscale-ip```
 - **Files** :```http://< tailscale-ip >:8080```
 
 ### Tailscale MagicDNS makes remembering IPs unnecessary
@@ -57,3 +57,4 @@ graph TD
     Client -- "Code (Port 22/Tunnel)" --> Tunnel
     Browser -- "Manage Files (Port 8080)" --> FileBrowser
     Client -. "Backup (SSH)" .-> SSH 
+```
