@@ -30,7 +30,6 @@
 - **Terminal** : ```ssh nas_user@tailscale-ip```
 - **Files** :```http://< tailscale-ip >:8080```
 
-### Tailscale MagicDNS makes remembering IPs unnecessary
 
 ## 🗺️ Network Architecture
 
@@ -58,3 +57,22 @@ graph TD
     Browser -- "Manage Files (Port 8080)" --> FileBrowser
     Client -. "Backup (SSH)" .-> SSH 
 ```
+# Notes
+- Tailscale MagicDNS makes remembering IPs unnecessary
+- I have included the ```setup_firewall.ps1``` script in the ```/scripts``` folder to automate the network configuration on new machines .
+
+# Hardware Specs
+
+- **Host Machine**: KIM_MAIN
+- **CPU**: Ryzen 5 5500G
+- **RAM**: 64GB DDR4 (Crucial for Running VS Code Server + NAS)
+- **Storage**: 512GB For OS , 4TB For NAS Storage
+
+- **Client Machine**: Dell XPS 15 / Samsung Tab S9 FE
+- **OS**: Windows 11 / Android
+
+
+## Future RoadMap
+- [ ] Set up **Wake-On-Lan**(WOL) to turn on the PC on remotely.
+- [ ] add **Docker** to the Host PC for running containers.
+- [ ] Create a backup script to mirror the NAS to Google Drive
