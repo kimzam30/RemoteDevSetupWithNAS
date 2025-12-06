@@ -33,28 +33,28 @@
 ### Tailscale MagicDNS makes remembering IPs unnecessary
 
 ## Network Architecture
+
 ## 🗺️ Network Architecture
 
-```mermaid
 graph TD
-    subgraph Home_Network [🏠 Home Base (Windows PC)]
+    subgraph Home_Network ["🏠 Home Base (Windows PC)"]
         PC[Host PC]
         FileBrowser[FileBrowser Service 8080]
         SSH[OpenSSH Server 22]
         Tunnel[VS Code Tunnel]
     end
 
-    subgraph Travel_Setup [✈️ Travel Laptop  iPad]
+    subgraph Travel_Setup ["✈️ Travel Laptop / iPad"]
         Client[VS Code Client]
         Browser[Web Browser]
     end
 
     Tailscale((Tailscale VPN Mesh))
 
-    PC -- Tailscale
-    Tailscale -- Client
-    Tailscale -- Browser
+    PC <--> Tailscale
+    Tailscale <--> Client
+    Tailscale <--> Browser
 
-    Client -- Code (Port 22Tunnel) -- Tunnel
-    Browser -- Manage Files (Port 8080) -- FileBrowser
-    Client -. Backup (SSH) .- SSH 
+    Client -- "Code (Port 22/Tunnel)" --> Tunnel
+    Browser -- "Manage Files (Port 8080)" --> FileBrowser
+    Client -. "Backup (SSH)" .-> SSH
