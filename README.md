@@ -1,2 +1,33 @@
-# remote-dev--setup
-Remote Programming With VS
+# Remote-Dev-Setup with Private NAS by kimzam
+**Remote Programming** With Visual Studio Code (VSC) with **Private Windows NAS**
+ 
+ ## Architecture
+ - Host Machine (Main machine that runs the code) : Windows Desktop (Always ON)
+ - Network : Tailscale Mesh VPN (Direct P2P Connection)
+ - Code Access : VS Code Remote Tunnels 
+ - Backup Access : OpenSSH Server (Windows Native)
+ - File Access : FileBrowser (Self-hosted web GUI)
+
+ ## Configuration Steps 
+ ### 1. Network & Security
+ - Install Tailscale 
+ - **FIX** (optional): Disabled SMB Multichannel to prevent throttling.
+ **'Set-SmbServerConfiguration -Enable Multichannel $false -Force'**
+- **Firewall** : Whitelisted Tailscale subnet (100.0.x) for SMB traffic.
+
+### 2. SSH Backup (Just In Case Layer)
+- Enabled Windows OpenSSH Server via Optional Features on Windows Setting .
+- **Service** : Set 'sshd' to Automatic startup .
+- **Trap Avoided** : Created a local user **'nas_user'** to bypass Microsoft Account authentication issues over SSH
+
+### 3. Web NAS (FileBrowser)
+- Tool : [FileBrowser] (https://filebrowser.org)
+- **Persistence** : Used NSSM (Non-Sucking Service Manager) to run the binary as a background Windows service
+- **Command** : **'.\filebrowser.exe -r "D:\Files" -a 0.0.0.0 -p 8080'**
+
+## How to Connect
+- **Coding** : 'Code tunnel' via VS Code Desktop.
+- **Terminal** : 'ssh nas_user@tailcale-ip'
+- **Files** : 'http://< tailscale-ip >:8080'
+
+### Tailscale MagicDNS makes remembering IPs unnecessary
