@@ -32,8 +32,6 @@
 
 ### Tailscale MagicDNS makes remembering IPs unnecessary
 
-## Network Architecture
-
 ## 🗺️ Network Architecture
 
 ```mermaid
