@@ -36,6 +36,7 @@
 
 ## 🗺️ Network Architecture
 
+```mermaid
 graph TD
     subgraph Home_Network ["🏠 Home Base (Windows PC)"]
         PC[Host PC]
@@ -57,4 +58,4 @@ graph TD
 
     Client -- "Code (Port 22/Tunnel)" --> Tunnel
     Browser -- "Manage Files (Port 8080)" --> FileBrowser
-    Client -. "Backup (SSH)" .-> SSH
+    Client -. "Backup (SSH)" .-> SSH ```
