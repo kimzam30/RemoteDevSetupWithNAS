@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Base Monitor</title>
+    <style>
+        body { font-family: -apple-system, sans-serif; background: #1a1a1a; color: white; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 600px; }
+        .card { background: #333; padding: 20px; border-radius: 12px; text-align: center; }
+        h2 { margin: 0 0 10px; color: #aaa; font-size: 14px; text-transform: uppercase; }
+        .value { font-size: 40px; font-weight: bold; color: #4CAF50; }
+        .alert { color: #f44336; }
+        .status-dot { height: 15px; width: 15px; border-radius: 50%; display: inline-block; }
+        .up { background-color: #4CAF50; box-shadow: 0 0 10px #4CAF50; }
+        .down { background-color: #f44336; box-shadow: 0 0 10px #f44336; }
+    </style>
+    <meta http-equiv="refresh" content="5"> 
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <h2>CPU Usage</h2>
+            <div class="value">{{ cpu }}%</div>
+        </div>
+        
+        <div class="card">
+            <h2>RAM Usage</h2>
+            <div class="value">{{ ram }}%</div>
+        </div>
+
+        <div class="card">
+            <h2>SSH Server</h2>
+            <div class="status-dot {{ 'up' if ssh_status else 'down' }}"></div>
+            <p>{{ 'ONLINE' if ssh_status else 'OFFLINE' }}</p>
+        </div>
+
+        <div class="card">
+            <h2>NAS Browser</h2>
+            <div class="status-dot {{ 'up' if nas_status else 'down' }}"></div>
+            <p>{{ 'ONLINE' if nas_status else 'OFFLINE' }}</p>
+        </div>
+    </div>
+</body>
+</html>
