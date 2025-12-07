@@ -31,7 +31,7 @@
 - **Files** :```http://< tailscale-ip >:8080```
 
 
-## 🗺️ Network Architecture
+## Network Architecture
 
 ```mermaid
 graph TD
