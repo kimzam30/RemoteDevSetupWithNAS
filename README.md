@@ -156,6 +156,21 @@ Spin up the environment:
 ```bash
 docker-compose up -d
 ```
+## 🌐 Secure Remote Access (Tailscale)
+
+This environment is designed to be accessed via **Tailscale**, a private mesh VPN. This allows you to connect securely from anywhere (coffee shop, hotel, etc.) without opening ports on your router.
+
+### How to Connect
+1.  **Host Side:** Ensure Tailscale is running on your NAS/Server.
+    * *Tip:* Run `tailscale ip` on your host to find its private IP (starts with `100.x.x.x`).
+2.  **Client Side:** Install the Tailscale app on your remote device (iPad, Laptop, Phone).
+3.  **Access:** Open your browser and navigate to:
+    ```
+    http://<YOUR-TAILSCALE-IP>:8443
+    ```
+    *(Example: `http://100.86.212.92:8443`)*
+
+> **Security Note:** Because we bind the service to `0.0.0.0` in Docker, it is technically accessible on your local network too. Using Tailscale ensures you can access it safely even when you are miles away.
 
 ## 🖥️ Usage
 
